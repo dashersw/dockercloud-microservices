@@ -1,6 +1,6 @@
 {
   "name": "dockercloud-microservices",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An example workflow to build & deploy Node.js microservices to Docker Cloud.",
   "repository": {
     "type": "git",

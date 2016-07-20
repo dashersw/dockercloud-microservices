@@ -1,0 +1,26 @@
+version: '2'
+services:
+  api-server:
+    build: .
+    image: dashersw/dockercloud-microservices:api
+    command: node api-server
+    environment:
+      - VIRTUAL_HOST=local.api.cloud
+    ports:
+      - 3000
+    restart: always
+  time-service:
+    build: .
+    image: dashersw/dockercloud-microservices:time
+    command: node time-service
+    restart: always
+  proxy:
+    image: dockercloud/haproxy:1.5.1
+    links:
+      - api-server
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

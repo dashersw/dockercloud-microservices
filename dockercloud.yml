@@ -3,7 +3,7 @@ api-server:
   command: node api-server
   environment:
     - VIRTUAL_HOST=api.cloud
-  image: dashersw/dockercloud-microservices:api
+  image: cotedemo/dockercloud-microservices:api
   ports:
     - '3000'
   restart: always
@@ -12,7 +12,7 @@ api-server:
 time-service:
   autoredeploy: true
   command: node time-service
-  image: dashersw/dockercloud-microservices:time
+  image: cotedemo/dockercloud-microservices:time
   tags:
     - nodecluster-name=services
   restart: always

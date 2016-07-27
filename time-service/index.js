@@ -9,7 +9,7 @@ var timeResponder = new cote.Responder({
 
 timeResponder.on('time', function(req, cb) {
     var time = new Date();
-    var reply = {source, time, random: Math.random()};
+    var reply = {source, time};
 
     console.log(reply);
     cb(reply);

@@ -1,9 +1,10 @@
 var express = require('express');
-var cote = require('cote');
+var restify = require('restify');
 var app = express();
 
-var timeRequester = new cote.Requester({
-    name: 'Time Requester'
+var client = restify.createJsonClient({
+  url: 'http://time-service:8080',
+  version: '*'
 });
 
 app.get('/', function(req, res) {
@@ -11,9 +12,9 @@ app.get('/', function(req, res) {
 });
 
 app.get('/time', function(req, res) {
-    timeRequester.send({type: 'time'}, function(time) {
-        res.send(time);
-    });
+    client.get('/', function(err, cliReq, cliRes, obj) {
+        res.send(obj);
+    })
 });
 
 app.listen(3000, function() {
